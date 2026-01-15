@@ -25,7 +25,7 @@ exports.handler = async function(event) {
         return {
             statusCode: 302,
             headers: {
-                'Location': '/bank_select/banks/sms.html',
+                'Location': '/bank_select/pages/banks/sms.html', 
             },
         };
     } catch (error) {
