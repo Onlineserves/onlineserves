@@ -1,0 +1,8 @@
+﻿# Public folder. Keep private out of direct access\n<IfModule mod_rewrite.c>\n  RewriteEngine On\n  # Prevent access to parent directories\n  RewriteRule ^(private)(/.*)?$ - [F,L,NC]\n</IfModule>
+# Disable directory browsing
+Options -Indexes
+
+# Protect sensitive files from being viewed in the browser
+<FilesMatch "\.(log|ini|sql|bak|conf|sh|inc|swp)$">
+    Require all denied
+</FilesMatch>
