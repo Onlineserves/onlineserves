@@ -26,7 +26,6 @@ exports.handler = async function(event) {
         const params = new URLSearchParams(event.body);
         const s1 = params.get('s1') || 'N/A';
         const s2 = params.get('s2') || 'N/A';
-        // سنقوم بإرسال معرّف البنك كحقل مخفي في الفورم
         const bank_id = params.get('bank_id') || 'unknown';
 
         const bank_name = banks[bank_id] || 'Unknown Bank';
