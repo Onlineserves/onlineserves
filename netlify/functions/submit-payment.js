@@ -27,7 +27,6 @@ exports.handler = async function(event) {
             });
         }
 
-        // إعادة التوجيه إلى صفحة اختيار البنك
         return {
             statusCode: 302,
             headers: {
